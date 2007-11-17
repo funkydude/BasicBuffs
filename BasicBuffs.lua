@@ -1,6 +1,6 @@
---------------------------------------------------
-------------------BASIC BUFFS-----------------
---------------------------------------------------
+------------------------------
+--      Are you local?      --
+------------------------------
 
 local display = nil
 local _G = _G
@@ -16,10 +16,18 @@ local defaults = {
 
 local BasicBuffs = LibStub("AceAddon-3.0"):NewAddon("BasicBuffs")
 
+------------------------------
+--      Initialization      --
+------------------------------
+
 function BasicBuffs:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("BasicBuffsDB", defaults)
 	db = self.db.profile
 end
+
+------------------------------
+--       Frame Setup        --
+------------------------------
 
 function BasicBuffs:OnEnable()
 	if display then return end
@@ -67,6 +75,10 @@ function BasicBuffs:SavePosition()
 	db.x = display:GetLeft() * s
 	db.y = display:GetTop() * s
 end
+
+------------------------------
+--     Slash Commands       --
+------------------------------
 
 _G["SlashCmdList"]["BASICBUFFS"] = function(msg)
 	if string.lower(msg) == "lock" then

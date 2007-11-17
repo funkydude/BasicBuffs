@@ -7,4 +7,6 @@
 ## Version: 1.0
 ## SavedVariables: BasicBuffsDB
 
+embeds.xml
+
 BasicBuffs.lua
