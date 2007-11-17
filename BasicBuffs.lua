@@ -32,7 +32,7 @@ end
 function BasicBuffs:OnEnable()
 	if display then return end
 
-	display = CreateFrame("Frame", "BasicBuffsBuffFrame", UIParent)
+	display = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
 	display:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",})
 	display:SetFrameStrata("BACKGROUND")
 	display:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
