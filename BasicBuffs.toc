@@ -6,6 +6,8 @@
 ## X-Website: http://wowace.com/wiki/BasicBuffs
 ## Version: 1.0
 ## SavedVariables: BasicBuffsDB
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
 
 embeds.xml
 
