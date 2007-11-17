@@ -29,6 +29,7 @@ end
 --       Frame Setup        --
 ------------------------------
 
+local function stop() end
 function BasicBuffs:OnEnable()
 	if display then return end
 
@@ -65,7 +66,7 @@ function BasicBuffs:OnEnable()
 
 	TemporaryEnchantFrame:ClearAllPoints()
 	TemporaryEnchantFrame:SetPoint("TOPRIGHT", display, "TOPRIGHT")
-	TemporaryEnchantFrame.SetPoint = function() end
+	TemporaryEnchantFrame.SetPoint = stop
 end
 
 function BasicBuffs:SavePosition()
