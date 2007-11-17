@@ -1,0 +1,10 @@
+﻿## Interface: 20300
+## Title: BasicBuffs
+## Notes: Move that buff frame!
+## Author: Funkydude
+## X-Category: Buffs
+## X-Website: http://wowace.com/wiki/BasicBuffs
+## Version: 1.0
+## SavedVariables: BasicBuffsDB
+
+BasicBuffs.lua
