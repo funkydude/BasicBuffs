@@ -77,29 +77,35 @@ function BasicBuffs:SavePosition()
 	db.y = display:GetTop() * s
 end
 
+function BasicBuffs:Print(msg)
+	DEFAULT_CHAT_FRAME:AddMessage("|cFF33FF99BasicBuffs|r: " .. msg)
+end
+
 ------------------------------
 --     Slash Commands       --
 ------------------------------
 
-_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
+local function slashCMD(msg)
 	if string.lower(msg) == "lock" then
 		if not db.lock then
 			display:SetBackdropColor(0,1,0,0)
 			display:EnableMouse(false)
 			display:SetMovable(false)
 			db.lock = true
-			ChatFrame1:AddMessage("BasicBuffs: Locked")
+			BasicBuffs:Print("Locked")
 		else
 			display:SetBackdropColor(0,1,0,1)
 			display:EnableMouse(true)
 			display:SetMovable(true)
 			db.lock = nil
-			ChatFrame1:AddMessage("BasicBuffs: Unlocked")
+			BasicBuffs:Print("Unlocked")
 		end
 	elseif msg == "" then
-		ChatFrame1:AddMessage("BasicBuffs: Commands:")
-		ChatFrame1:AddMessage("/bb lock")
+		BasicBuffs:Print("Commands:")
+		BasicBuffs:Print("/bb lock")
 	end
 end
+
+_G["SlashCmdList"]["BASICBUFFS"] = slashCMD
 _G["SLASH_BASICBUFFS1"] = "/bb"
 
