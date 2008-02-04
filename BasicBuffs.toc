@@ -3,7 +3,7 @@
 ## Notes: Move that buff frame!
 ## Author: Funkydude
 ## X-Category: Buffs
-## X-Website: http://wowace.com/wiki/BasicBuffs
+# X-Website: http://wowace.com/wiki/
 ## Version: 1.0
 ## SavedVariables: BasicBuffsDB
 ## OptionalDeps: Ace3

@@ -3,7 +3,6 @@
 ------------------------------
 
 local display = nil
-local _G = _G
 
 local db
 local defaults = {
