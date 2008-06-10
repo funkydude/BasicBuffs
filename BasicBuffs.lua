@@ -107,4 +107,4 @@ end
 
 _G["SlashCmdList"]["BASICBUFFS"] = slashCMD
 _G["SLASH_BASICBUFFS1"] = "/bb"
-
+_G["SLASH_BASICBUFFS2"] = "/basicbuffs"
