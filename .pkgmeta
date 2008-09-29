@@ -1,0 +1,6 @@
+package-as: BasicBuffs
+
+externals:
+    /LibStub: http://svn.wowace.com/wowace/tags/LibStub/1.0/
+    /AceAddon-3.0: http://svn.wowace.com/wowace/trunk/Ace3/AceAddon-3.0/
+    /AceDB-3.0: http://svn.wowace.com/wowace/trunk/Ace3/AceDB-3.0/
