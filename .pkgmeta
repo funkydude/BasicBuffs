@@ -1,6 +1,6 @@
 package-as: BasicBuffs
 
 externals:
-    /LibStub: http://svn.wowace.com/wowace/tags/LibStub/1.0/
-    /AceAddon-3.0: http://svn.wowace.com/wowace/trunk/Ace3/AceAddon-3.0/
-    /AceDB-3.0: http://svn.wowace.com/wowace/trunk/Ace3/AceDB-3.0/
+    Libs/AceAddon-3.0: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceAddon-3.0
+    Libs/AceDB-3.0: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceDB-3.0
+    Libs/LibStub: svn://svn.wowace.com/wow/libstub/mainline/tags/1.0
