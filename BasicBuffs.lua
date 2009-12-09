@@ -1,39 +1,11 @@
-------------------------------
---      Are you local?      --
-------------------------------
 
-local display = nil
+do
+	if not BasicBuffsStorage then
+		BasicBuffsStorage = {}
+	end
 
-local db
-local defaults = {
-	profile = {
-		x = nil,
-		y = nil,
-		lock = nil,
-	}
-}
-
-local BasicBuffs = LibStub("AceAddon-3.0"):NewAddon("BasicBuffs")
-
-------------------------------
---      Initialization      --
-------------------------------
-
-function BasicBuffs:OnInitialize()
-	self.db = LibStub("AceDB-3.0"):New("BasicBuffsDB", defaults)
-	db = self.db.profile
-end
-
-------------------------------
---       Frame Setup        --
-------------------------------
-
-local function stop() end
-function BasicBuffs:OnEnable()
-	if display then return end
-
-	display = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
-	display:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",})
+	local display = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
+	display:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background"})
 	display:SetFrameStrata("BACKGROUND")
 	display:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 	display:SetBackdropColor(0,1,0)
@@ -43,68 +15,51 @@ function BasicBuffs:OnEnable()
 	display:EnableMouse(true)
 	display:RegisterForDrag("LeftButton")
 	display:SetMovable(true)
-	display:SetScript("OnDragStart", function() this:StartMoving() end)
-	display:SetScript("OnDragStop", function()
-		this:StopMovingOrSizing()
-		self:SavePosition()
+	display:SetScript("OnDragStart", function(frame) frame:StartMoving() end)
+	display:SetScript("OnDragStop", function(frame)
+		frame:StopMovingOrSizing()
+		local s = frame:GetEffectiveScale()
+		BasicBuffsStorage.x = frame:GetLeft() * s
+		BasicBuffsStorage.y = frame:GetTop() * s
 	end)
 
-	local x = db.x
-	local y = db.y
-	if x and y then
+	if BasicBuffsStorage.x and BasicBuffsStorage.y then
 		local s = display:GetEffectiveScale()
 		display:ClearAllPoints()
 		display:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x / s, y / s)
 	end
 
-	if db.lock then
+	if BasicBuffsStorage.lock then
 		display:SetBackdropColor(0,1,0,0)
 		display:EnableMouse(false)
 		display:SetMovable(false)
 	end
 
-	TemporaryEnchantFrame:ClearAllPoints()
-	TemporaryEnchantFrame:SetPoint("TOPRIGHT", display, "TOPRIGHT")
-	TemporaryEnchantFrame.SetPoint = stop
-end
+	ConsolidatedBuffs:ClearAllPoints()
+	ConsolidatedBuffs:SetPoint("TOPRIGHT", display, "TOPRIGHT")
+	ConsolidatedBuffs.SetPoint = function() end
 
-function BasicBuffs:SavePosition()
-	if not display then return end
-
-	local s = display:GetEffectiveScale()
-	db.x = display:GetLeft() * s
-	db.y = display:GetTop() * s
-end
-
-function BasicBuffs:Print(msg)
-	DEFAULT_CHAT_FRAME:AddMessage("|cFF33FF99BasicBuffs|r: " .. msg)
-end
-
-------------------------------
---     Slash Commands       --
-------------------------------
-
-local function slashCMD(msg)
-	if string.lower(msg) == "lock" then
-		if not db.lock then
-			display:SetBackdropColor(0,1,0,0)
-			display:EnableMouse(false)
-			display:SetMovable(false)
-			db.lock = true
-			BasicBuffs:Print("Locked")
-		else
-			display:SetBackdropColor(0,1,0,1)
-			display:EnableMouse(true)
-			display:SetMovable(true)
-			db.lock = nil
-			BasicBuffs:Print("Unlocked")
+	_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
+		if string.lower(msg) == "lock" then
+			if not BasicBuffsStorage.lock then
+				display:SetBackdropColor(0,1,0,0)
+				display:EnableMouse(false)
+				display:SetMovable(false)
+				BasicBuffsStorage.lock = true
+				print("|cFF33FF99BasicBuffs|r: ", "Locked")
+			else
+				display:SetBackdropColor(0,1,0,1)
+				display:EnableMouse(true)
+				display:SetMovable(true)
+				db.lock = nil
+				print("|cFF33FF99BasicBuffs|r: ", "Unlocked")
+			end
+		elseif msg == "" then
+			print("|cFF33FF99BasicBuffs|r: ", "Commands:")
+			print("|cFF33FF99BasicBuffs|r: ", "/bb lock")
 		end
-	elseif msg == "" then
-		BasicBuffs:Print("Commands:")
-		BasicBuffs:Print("/bb lock")
 	end
+	_G["SLASH_BASICBUFFS1"] = "/bb"
+	_G["SLASH_BASICBUFFS2"] = "/basicbuffs"
 end
 
-_G["SlashCmdList"]["BASICBUFFS"] = slashCMD
-_G["SLASH_BASICBUFFS1"] = "/bb"
-_G["SLASH_BASICBUFFS2"] = "/basicbuffs"
