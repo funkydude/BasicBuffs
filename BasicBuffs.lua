@@ -35,9 +35,9 @@ do
 		display:SetMovable(false)
 	end
 
-	ConsolidatedBuffs:ClearAllPoints()
-	ConsolidatedBuffs:SetPoint("TOPRIGHT", display, "TOPRIGHT")
-	ConsolidatedBuffs.SetPoint = function() end
+	BuffFrame:ClearAllPoints()
+	BuffFrame:SetPoint("TOPRIGHT", display, "TOPRIGHT")
+	BuffFrame.SetPoint = function() end
 
 	_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
 		if string.lower(msg) == "lock" then
