@@ -3,7 +3,7 @@
 ## Notes: Move that buff frame!
 ## Author: Funkydude
 ## X-Category: Buffs
-## Version: 2.15
+## Version: 2.2
 ## SavedVariables: BasicBuffsStorage
 
 BasicBuffs.lua

@@ -36,6 +36,10 @@ f:SetScript("OnEvent", function(display)
 		display:SetMovable(false)
 	end
 
+	ConsolidatedBuffs:ClearAllPoints()
+	ConsolidatedBuffs:SetPoint("TOPRIGHT", display, "TOPRIGHT")
+	ConsolidatedBuffs.SetPoint = function() end
+
 	BuffFrame:ClearAllPoints()
 	BuffFrame:SetPoint("TOPRIGHT", display, "TOPRIGHT")
 	BuffFrame.SetPoint = function() end
