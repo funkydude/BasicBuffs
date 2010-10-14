@@ -1,10 +1,11 @@
 
-do
-	if not BasicBuffsStorage then
+local f = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
+f:RegisterEvent("PLAYER_LOGIN")
+f:SetScript("OnEvent", function(display)
+	if type(BasicBuffsStorage) ~= "table" then
 		BasicBuffsStorage = {}
 	end
 
-	local display = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
 	display:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background"})
 	display:SetFrameStrata("BACKGROUND")
 	display:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
@@ -42,16 +43,16 @@ do
 	_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
 		if string.lower(msg) == "lock" then
 			if not BasicBuffsStorage.lock then
-				display:SetBackdropColor(0,1,0,0)
-				display:EnableMouse(false)
-				display:SetMovable(false)
+				BasicBuffsFrame:SetBackdropColor(0,1,0,0)
+				BasicBuffsFrame:EnableMouse(false)
+				BasicBuffsFrame:SetMovable(false)
 				BasicBuffsStorage.lock = true
 				print("|cFF33FF99BasicBuffs|r: ", "Locked")
 			else
-				display:SetBackdropColor(0,1,0,1)
-				display:EnableMouse(true)
-				display:SetMovable(true)
-				db.lock = nil
+				BasicBuffsFrame:SetBackdropColor(0,1,0,1)
+				BasicBuffsFrame:EnableMouse(true)
+				BasicBuffsFrame:SetMovable(true)
+				BasicBuffsStorage.lock = nil
 				print("|cFF33FF99BasicBuffs|r: ", "Unlocked")
 			end
 		elseif msg == "" then
@@ -61,5 +62,7 @@ do
 	end
 	_G["SLASH_BASICBUFFS1"] = "/bb"
 	_G["SLASH_BASICBUFFS2"] = "/basicbuffs"
-end
+	display:UnregisterEvent("PLAYER_LOGIN")
+	display:SetScript("OnEvent", nil)
+end)
 
