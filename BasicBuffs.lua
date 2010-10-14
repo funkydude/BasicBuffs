@@ -27,7 +27,7 @@ f:SetScript("OnEvent", function(display)
 	if BasicBuffsStorage.x and BasicBuffsStorage.y then
 		local s = display:GetEffectiveScale()
 		display:ClearAllPoints()
-		display:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x / s, y / s)
+		display:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", BasicBuffsStorage.x / s, BasicBuffsStorage.y / s)
 	end
 
 	if BasicBuffsStorage.lock then
