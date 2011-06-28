@@ -1,9 +1,9 @@
-﻿## Interface: 40100
+﻿## Interface: 40200
 ## Title: BasicBuffs
 ## Notes: Move that buff frame!
 ## Author: Funkydude
 ## X-Category: Buffs
-## Version: 2.21
+## Version: 2.22
 ## SavedVariables: BasicBuffsStorage
 
 BasicBuffs.lua
