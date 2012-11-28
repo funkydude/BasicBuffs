@@ -36,13 +36,21 @@ f:SetScript("OnEvent", function(display)
 		display:SetMovable(false)
 	end
 
+	local setCons = ConsolidatedBuffs.SetPoint
 	ConsolidatedBuffs:ClearAllPoints()
-	ConsolidatedBuffs:SetPoint("TOPRIGHT", display, "TOPRIGHT")
-	ConsolidatedBuffs.SetPoint = function() end
+	setCons(ConsolidatedBuffs, "TOPRIGHT", display, "TOPRIGHT")
+	hooksecurefunc(ConsolidatedBuffs, "SetPoint", function(frame)
+		frame:ClearAllPoints()
+		setCons(frame, "TOPRIGHT", display, "TOPRIGHT")
+	end)
 
+	local setBuff = BuffFrame.SetPoint
 	BuffFrame:ClearAllPoints()
-	BuffFrame:SetPoint("TOPRIGHT", display, "TOPRIGHT")
-	BuffFrame.SetPoint = function() end
+	setBuff(BuffFrame, "TOPRIGHT", display, "TOPRIGHT")
+	hooksecurefunc(BuffFrame, "SetPoint", function(frame)
+		frame:ClearAllPoints()
+		setBuff(frame, "TOPRIGHT", display, "TOPRIGHT")
+	end)
 
 	_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
 		if string.lower(msg) == "lock" then
