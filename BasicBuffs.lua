@@ -2,7 +2,7 @@
 local f = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
 f:RegisterEvent("PLAYER_LOGIN")
 f:SetScript("OnEvent", function(display)
-	if type(BasicBuffsStorage) ~= "table" then
+	if not BasicBuffsStorage then
 		BasicBuffsStorage = {}
 	end
 
@@ -27,7 +27,7 @@ f:SetScript("OnEvent", function(display)
 	if BasicBuffsStorage.x and BasicBuffsStorage.y then
 		local s = display:GetEffectiveScale()
 		display:ClearAllPoints()
-		display:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", BasicBuffsStorage.x / s, BasicBuffsStorage.y / s)
+		display:SetPoint("TOPLEFT", "UIParent", "BOTTOMLEFT", BasicBuffsStorage.x / s, BasicBuffsStorage.y / s)
 	end
 
 	if BasicBuffsStorage.lock then
@@ -52,28 +52,28 @@ f:SetScript("OnEvent", function(display)
 		setBuff(frame, "TOPRIGHT", display, "TOPRIGHT")
 	end)
 
-	_G["SlashCmdList"]["BASICBUFFS"] = function(msg)
-		if string.lower(msg) == "lock" then
+	SlashCmdList.BASICBUFFS = function(msg)
+		if msg:lower() == "lock" then
 			if not BasicBuffsStorage.lock then
-				BasicBuffsFrame:SetBackdropColor(0,1,0,0)
-				BasicBuffsFrame:EnableMouse(false)
-				BasicBuffsFrame:SetMovable(false)
+				display:SetBackdropColor(0,1,0,0)
+				display:EnableMouse(false)
+				display:SetMovable(false)
 				BasicBuffsStorage.lock = true
-				print("|cFF33FF99BasicBuffs|r: ", "Locked")
+				print("|cFF33FF99BasicBuffs|r: Locked")
 			else
-				BasicBuffsFrame:SetBackdropColor(0,1,0,1)
-				BasicBuffsFrame:EnableMouse(true)
-				BasicBuffsFrame:SetMovable(true)
+				display:SetBackdropColor(0,1,0,1)
+				display:EnableMouse(true)
+				display:SetMovable(true)
 				BasicBuffsStorage.lock = nil
-				print("|cFF33FF99BasicBuffs|r: ", "Unlocked")
+				print("|cFF33FF99BasicBuffs|r: Unlocked")
 			end
-		elseif msg == "" then
-			print("|cFF33FF99BasicBuffs|r: ", "Commands:")
-			print("|cFF33FF99BasicBuffs|r: ", "/bb lock")
+		else
+			print("|cFF33FF99BasicBuffs|r: Commands:")
+			print("|cFF33FF99BasicBuffs|r: /bb lock")
 		end
 	end
-	_G["SLASH_BASICBUFFS1"] = "/bb"
-	_G["SLASH_BASICBUFFS2"] = "/basicbuffs"
+	SLASH_BASICBUFFS1 = "/bb"
+	SLASH_BASICBUFFS2 = "/basicbuffs"
 	display:UnregisterEvent("PLAYER_LOGIN")
 	display:SetScript("OnEvent", nil)
 end)
