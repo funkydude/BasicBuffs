@@ -1,4 +1,4 @@
-## Interface: 60000
+## Interface: 60100
 ## Title: BasicBuffs
 ## Notes: Move that buff frame!
 ## Author: Funkydude
