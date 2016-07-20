@@ -36,14 +36,6 @@ f:SetScript("OnEvent", function(display)
 		display:SetMovable(false)
 	end
 
-	local setCons = ConsolidatedBuffs.SetPoint
-	ConsolidatedBuffs:ClearAllPoints()
-	setCons(ConsolidatedBuffs, "TOPRIGHT", display, "TOPRIGHT")
-	hooksecurefunc(ConsolidatedBuffs, "SetPoint", function(frame)
-		frame:ClearAllPoints()
-		setCons(frame, "TOPRIGHT", display, "TOPRIGHT")
-	end)
-
 	local setBuff = BuffFrame.SetPoint
 	BuffFrame:ClearAllPoints()
 	setBuff(BuffFrame, "TOPRIGHT", display, "TOPRIGHT")
