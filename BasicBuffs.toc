@@ -3,6 +3,9 @@
 ## Notes: Move that buff frame!
 ## Author: Funkydude
 ## X-Category: Buffs
+## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
+## X-Curse-Project-ID: basicbuffs
+## X-WoWI-ID: 21939
 ## SavedVariables: BasicBuffsStorage
 
 BasicBuffs.lua
