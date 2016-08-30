@@ -1,8 +1,7 @@
 # BasicBuffs
 Allows you to move the default Blizzard buff frame.
 
-## Commands
-* /bb
+## Lock/Unlock Command
 * /basicbuffs
 
 ## Download

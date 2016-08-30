@@ -44,28 +44,22 @@ f:SetScript("OnEvent", function(display)
 		setBuff(frame, "TOPRIGHT", display, "TOPRIGHT")
 	end)
 
-	SlashCmdList.BASICBUFFS = function(msg)
-		if msg:lower() == "lock" then
-			if not BasicBuffsStorage.lock then
-				bg:Hide()
-				display:EnableMouse(false)
-				display:SetMovable(false)
-				BasicBuffsStorage.lock = true
-				print("|cFF33FF99BasicBuffs|r:", _G.LOCKED)
-			else
-				bg:Show()
-				display:EnableMouse(true)
-				display:SetMovable(true)
-				BasicBuffsStorage.lock = nil
-				print("|cFF33FF99BasicBuffs|r:", _G.UNLOCK)
-			end
+	SlashCmdList.BASICBUFFS = function()
+		if not BasicBuffsStorage.lock then
+			bg:Hide()
+			display:EnableMouse(false)
+			display:SetMovable(false)
+			BasicBuffsStorage.lock = true
+			print("|cFF33FF99BasicBuffs|r:", _G.LOCKED)
 		else
-			print("|cFF33FF99BasicBuffs|r: Commands:")
-			print("|cFF33FF99BasicBuffs|r: /bb lock")
+			bg:Show()
+			display:EnableMouse(true)
+			display:SetMovable(true)
+			BasicBuffsStorage.lock = nil
+			print("|cFF33FF99BasicBuffs|r:", _G.UNLOCK)
 		end
 	end
-	SLASH_BASICBUFFS1 = "/bb"
-	SLASH_BASICBUFFS2 = "/basicbuffs"
+	SLASH_BASICBUFFS1 = "/basicbuffs"
 	display:UnregisterEvent("PLAYER_LOGIN")
 	display:SetScript("OnEvent", nil)
 end)
