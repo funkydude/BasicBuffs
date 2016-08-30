@@ -6,10 +6,7 @@ f:SetScript("OnEvent", function(display)
 		BasicBuffsStorage = {}
 	end
 
-	display:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background"})
-	display:SetFrameStrata("BACKGROUND")
 	display:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
-	display:SetBackdropColor(0,1,0)
 	display:SetWidth(280)
 	display:SetHeight(225)
 	display:Show()
@@ -23,6 +20,9 @@ f:SetScript("OnEvent", function(display)
 		BasicBuffsStorage.x = frame:GetLeft() * s
 		BasicBuffsStorage.y = frame:GetTop() * s
 	end)
+	local bg = display:CreateTexture()
+	bg:SetAllPoints(display)
+	bg:SetColorTexture(0, 1, 0, 0.3)
 
 	if BasicBuffsStorage.x and BasicBuffsStorage.y then
 		local s = display:GetEffectiveScale()
@@ -31,7 +31,7 @@ f:SetScript("OnEvent", function(display)
 	end
 
 	if BasicBuffsStorage.lock then
-		display:SetBackdropColor(0,1,0,0)
+		bg:Hide()
 		display:EnableMouse(false)
 		display:SetMovable(false)
 	end
@@ -47,17 +47,17 @@ f:SetScript("OnEvent", function(display)
 	SlashCmdList.BASICBUFFS = function(msg)
 		if msg:lower() == "lock" then
 			if not BasicBuffsStorage.lock then
-				display:SetBackdropColor(0,1,0,0)
+				bg:Hide()
 				display:EnableMouse(false)
 				display:SetMovable(false)
 				BasicBuffsStorage.lock = true
-				print("|cFF33FF99BasicBuffs|r: Locked")
+				print("|cFF33FF99BasicBuffs|r:", _G.LOCKED)
 			else
-				display:SetBackdropColor(0,1,0,1)
+				bg:Show()
 				display:EnableMouse(true)
 				display:SetMovable(true)
 				BasicBuffsStorage.lock = nil
-				print("|cFF33FF99BasicBuffs|r: Unlocked")
+				print("|cFF33FF99BasicBuffs|r:", _G.UNLOCK)
 			end
 		else
 			print("|cFF33FF99BasicBuffs|r: Commands:")
