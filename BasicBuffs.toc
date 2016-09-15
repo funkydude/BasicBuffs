@@ -1,6 +1,16 @@
 ## Interface: 70000
 ## Title: BasicBuffs
-## Notes: Move that buff frame!
+## Notes: Move the Blizzard buff frame.
+## Notes-zhCN: Move the Blizzard buff frame.
+## Notes-zhTW: Move the Blizzard buff frame.
+## Notes-deDE: Move the Blizzard buff frame.
+## Notes-frFR: Move the Blizzard buff frame.
+## Notes-itIT: Move the Blizzard buff frame.
+## Notes-koKR: Move the Blizzard buff frame.
+## Notes-ruRU: Move the Blizzard buff frame.
+## Notes-ptBR: Move the Blizzard buff frame.
+## Notes-esES: Move the Blizzard buff frame.
+## Notes-esMX: Move the Blizzard buff frame.
 ## Author: Funkydude
 ## Version: @project-version@
 ## X-Category: Buffs
