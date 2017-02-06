@@ -15,7 +15,7 @@
 ## Version: @project-version@
 ## X-Category: Buffs
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
-## X-Curse-Project-ID: basicbuffs
+## X-Curse-Project-ID: 13503
 ## X-WoWI-ID: 21939
 ## SavedVariables: BasicBuffsStorage
 
