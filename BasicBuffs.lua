@@ -5,12 +5,13 @@ local bg = f:CreateTexture()
 bg:SetAllPoints(f)
 bg:SetColorTexture(0, 1, 0, 0.3)
 
-local setBuff = BuffFrame.SetPoint
-BuffFrame:ClearAllPoints()
-setBuff(BuffFrame, "TOPRIGHT", f, "TOPRIGHT")
+local SetPoint = f.SetPoint
+local ClearAllPoints = f.ClearAllPoints
+ClearAllPoints(BuffFrame)
+SetPoint(BuffFrame, "TOPRIGHT", f, "TOPRIGHT")
 hooksecurefunc(BuffFrame, "SetPoint", function(frame)
-	frame:ClearAllPoints()
-	setBuff(frame, "TOPRIGHT", f, "TOPRIGHT")
+	ClearAllPoints(frame)
+	SetPoint(frame, "TOPRIGHT", f, "TOPRIGHT")
 end)
 
 f:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
