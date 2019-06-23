@@ -5,4 +5,4 @@ Allows you to move the default Blizzard buff frame.
 * /basicbuffs
 
 ## Download
-https://mods.curse.com/addons/wow/basicbuffs
+https://www.curseforge.com/wow/addons/basicbuffs
