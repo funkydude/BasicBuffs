@@ -4,6 +4,7 @@ local f = CreateFrame("Frame", "BasicBuffsFrame", UIParent)
 local bg = f:CreateTexture()
 bg:SetAllPoints(f)
 bg:SetColorTexture(0, 1, 0, 0.3)
+bg:Show()
 
 local SetPoint = f.SetPoint
 local ClearAllPoints = f.ClearAllPoints
@@ -13,6 +14,11 @@ hooksecurefunc(BuffFrame, "SetPoint", function(frame)
 	ClearAllPoints(frame)
 	SetPoint(frame, "TOPRIGHT", f, "TOPRIGHT")
 end)
+
+local header = f:CreateFontString(nil, "OVERLAY", "TextStatusBarText")
+header:SetAllPoints(f)
+header:SetText("BasicBuffs")
+header:Show()
 
 f:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 f:SetWidth(280)
@@ -42,6 +48,7 @@ f:SetScript("OnEvent", function(display)
 
 	if BasicBuffsOptions[5] then
 		bg:Hide()
+		header:Hide()
 		display:EnableMouse(false)
 		display:SetMovable(false)
 	end
@@ -55,12 +62,14 @@ SlashCmdList.BASICBUFFS = function()
 
 	if not BasicBuffsOptions[5] then
 		bg:Hide()
+		header:Hide()
 		f:EnableMouse(false)
 		f:SetMovable(false)
 		BasicBuffsOptions[5] = true
 		print("|cFF33FF99BasicBuffs|r:", _G.LOCKED)
 	else
 		bg:Show()
+		header:Show()
 		f:EnableMouse(true)
 		f:SetMovable(true)
 		BasicBuffsOptions[5] = false
