@@ -24,24 +24,23 @@ f:SetMovable(true)
 f:SetScript("OnDragStart", function(frame) frame:StartMoving() end)
 f:SetScript("OnDragStop", function(frame)
 	frame:StopMovingOrSizing()
-	local s = frame:GetEffectiveScale()
-	BasicBuffsStorage.x = frame:GetLeft() * s
-	BasicBuffsStorage.y = frame:GetTop() * s
+	local a, _, b, c, d = frame:GetPoint()
+	BasicBuffsOptions[1] = a
+	BasicBuffsOptions[2] = b
+	BasicBuffsOptions[3] = c
+	BasicBuffsOptions[4] = d
 end)
 
 f:RegisterEvent("PLAYER_LOGIN")
 f:SetScript("OnEvent", function(display)
-	if not BasicBuffsStorage then
-		BasicBuffsStorage = {}
+	if not BasicBuffsOptions then
+		BasicBuffsOptions = {"CENTER", "CENTER", 0, 0, false}
 	end
 
-	if BasicBuffsStorage.x and BasicBuffsStorage.y then
-		local s = display:GetEffectiveScale()
-		display:ClearAllPoints()
-		display:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", BasicBuffsStorage.x / s, BasicBuffsStorage.y / s)
-	end
+	display:ClearAllPoints()
+	display:SetPoint(BasicBuffsOptions[1], UIParent, BasicBuffsOptions[2], BasicBuffsOptions[3], BasicBuffsOptions[4])
 
-	if BasicBuffsStorage.lock then
+	if BasicBuffsOptions[5] then
 		bg:Hide()
 		display:EnableMouse(false)
 		display:SetMovable(false)
@@ -52,19 +51,19 @@ f:SetScript("OnEvent", function(display)
 end)
 
 SlashCmdList.BASICBUFFS = function()
-	if not BasicBuffsStorage then return end
+	if not BasicBuffsOptions then return end
 
-	if not BasicBuffsStorage.lock then
+	if not BasicBuffsOptions[5] then
 		bg:Hide()
 		f:EnableMouse(false)
 		f:SetMovable(false)
-		BasicBuffsStorage.lock = true
+		BasicBuffsOptions[5] = true
 		print("|cFF33FF99BasicBuffs|r:", _G.LOCKED)
 	else
 		bg:Show()
 		f:EnableMouse(true)
 		f:SetMovable(true)
-		BasicBuffsStorage.lock = nil
+		BasicBuffsOptions[5] = false
 		print("|cFF33FF99BasicBuffs|r:", _G.UNLOCK)
 	end
 end
