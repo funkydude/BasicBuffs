@@ -17,6 +17,7 @@
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
 ## X-Curse-Project-ID: 13503
 ## X-WoWI-ID: 21939
+## X-Wago-ID: Mj6jkxKR
 ## SavedVariables: BasicBuffsOptions
 
 BasicBuffs.lua
