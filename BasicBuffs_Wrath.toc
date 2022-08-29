@@ -1,0 +1,23 @@
+## Interface: 30400
+## Title: BasicBuffs
+## Notes: Move the Blizzard buff frame.
+## Notes-zhCN: Move the Blizzard buff frame.
+## Notes-zhTW: Move the Blizzard buff frame.
+## Notes-deDE: Move the Blizzard buff frame.
+## Notes-frFR: Move the Blizzard buff frame.
+## Notes-itIT: Move the Blizzard buff frame.
+## Notes-koKR: Move the Blizzard buff frame.
+## Notes-ruRU: Move the Blizzard buff frame.
+## Notes-ptBR: Move the Blizzard buff frame.
+## Notes-esES: Move the Blizzard buff frame.
+## Notes-esMX: Move the Blizzard buff frame.
+## Author: Funkydude
+## Version: @project-version@
+## X-Category: Buffs
+## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
+## X-Curse-Project-ID: 13503
+## X-WoWI-ID: 21939
+## SavedVariables: BasicBuffsOptions
+
+BasicBuffs.lua
+
