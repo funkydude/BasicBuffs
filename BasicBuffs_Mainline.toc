@@ -19,4 +19,4 @@
 ## X-WoWI-ID: 21939
 ## X-Wago-ID: Mj6jkxKR
 
-BasicBuffs_Retail.lua
+BasicBuffs_Mainline.lua
