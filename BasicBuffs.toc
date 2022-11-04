@@ -18,7 +18,5 @@
 ## X-Curse-Project-ID: 13503
 ## X-WoWI-ID: 21939
 ## X-Wago-ID: Mj6jkxKR
-## SavedVariables: BasicBuffsOptions
 
-BasicBuffs.lua
-
+BasicBuffs_Retail.lua
