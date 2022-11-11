@@ -8,3 +8,8 @@ f:SetScript("OnEvent", function(frame, event)
 
 	print("|cFF33FF99BasicBuffs|r:", "This addon is no longer needed on Retail WoW, use 'Edit Mode' instead.")
 end)
+
+SlashCmdList.BASICBUFFS = function()
+	print("|cFF33FF99BasicBuffs|r:", "This addon is no longer needed on Retail WoW, use 'Edit Mode' instead.")
+end
+SLASH_BASICBUFFS1 = "/basicbuffs"
