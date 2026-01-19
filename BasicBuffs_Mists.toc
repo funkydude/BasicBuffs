@@ -1,4 +1,4 @@
-## Interface: 50500
+## Interface: 50502, 50503
 ## Title: BasicBuffs
 ## Notes: Move the Blizzard buff frame.
 ## Notes-zhCN: Move the Blizzard buff frame.

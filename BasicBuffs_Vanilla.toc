@@ -1,4 +1,4 @@
-## Interface: 11506, 11507
+## Interface: 11508, 11507
 ## Title: BasicBuffs
 ## Notes: Move the Blizzard buff frame.
 ## Notes-zhCN: Move the Blizzard buff frame.
